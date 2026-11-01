@@ -1,0 +1,25 @@
+name: "ECZ-ID Workflow Trust"
+description: "Review GitHub workflow dependencies, permissions and currentness facts without uploading source or inventing a safety score."
+author: EcoCitizenz Ltd
+branding:
+  icon: shield
+  color: green
+inputs:
+  report-path:
+    description: "Path for the JSON evidence report."
+    required: false
+    default: "eczid-workflow-trust.json"
+outputs:
+  result-state:
+    description: "OBSERVED, REVIEW_RECOMMENDED or NOT_APPLICABLE."
+  workflow-count:
+    description: "Number of supported GitHub Actions workflow files reviewed."
+  finding-count:
+    description: "Number of deterministic observations emitted."
+  report-path:
+    description: "Generated JSON report path."
+  next-action-url:
+    description: "One contextual ECZ-ID next step, or empty when none is warranted."
+runs:
+  using: node24
+  main: dist/index.js
